@@ -1,0 +1,612 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap");
+
+/* ================= VARIABLES ================= */
+$blue: #2597f4;
+$white: #fff;
+$black: #334;
+$light-color: #777;
+$light-bg: #f5f5f5;
+$border: 0.2rem solid rgba(0, 0, 0, 0.1);
+$box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.12);
+
+/* ================= MIXINS ================= */
+@mixin grid($size) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($size, 1fr));
+  gap: 2rem;
+}
+
+@mixin titleText($size) {
+  font-size: $size;
+  color: $black;
+  font-weight: 700;
+}
+
+@mixin graphText($size) {
+  font-size: $size;
+  color: $light-color;
+  line-height: 1.7;
+}
+
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fafafa;
+  padding-top: 14rem;
+}
+
+/* ================= GLOBAL ================= */
+section {
+  padding: 5rem 10%;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 3rem;
+  @include titleText(4rem);
+
+  span {
+    color: $blue;
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  font-size: 1.6rem;
+  background: $white;
+  border: $border;
+  cursor: pointer;
+
+  &:hover {
+    background: $blue;
+    color: $white;
+  }
+}
+
+/* ================= HEADER ================= */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  .contact-info {
+    background: $blue;
+    padding: 1.5rem 10%;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      color: $white;
+      font-size: 1.4rem;
+
+      i {
+        color: yellow;
+        padding-right: 0.5rem;
+      }
+    }
+  }
+
+  .navbar {
+    background: $white;
+    padding: 2rem 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: $border;
+    transition: 0.3s;
+
+    &.active {
+      box-shadow: $box-shadow;
+    }
+
+    .logo {
+      @include titleText(2.4rem);
+
+      i {
+        color: $blue;
+      }
+    }
+
+    .links {
+      display: flex;
+      gap: 2rem;
+
+      a {
+        @include titleText(1.8rem);
+
+        &:hover {
+          color: $blue;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+#menu-btn {
+  display: none;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+/* ================= HOME ================= */
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3rem;
+
+  .image {
+    flex: 1 1 40rem;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .content {
+    flex: 1 1 40rem;
+
+    h3 {
+      @include titleText(4.5rem);
+    }
+
+    p {
+      @include graphText(1.6rem);
+      margin: 1rem 0;
+    }
+  }
+}
+
+/* ================= FUN FACT ================= */
+.fun-fact {
+  background: $light-bg;
+  @include grid(25rem);
+
+  .box {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    img {
+      height: 8rem;
+    }
+
+    h3 {
+      @include titleText(3rem);
+    }
+
+    p {
+      @include graphText(1.5rem);
+    }
+  }
+}
+
+/* ================= ABOUT ================= */
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  padding: 5rem 10%;
+  flex-wrap: wrap;
+
+  .content {
+    flex: 1 1 45%;
+
+    h3 {
+      @include titleText(3rem);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      @include graphText(1.5rem);
+      margin-bottom: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .btn {
+      margin-top: 1rem;
+      display: inline-block;
+    }
+  }
+
+  .image {
+    flex: 1 1 45%;
+    text-align: center;
+
+    img {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+    }
+  }
+}
+
+/* ================= SERVICES ================= */
+.services {
+  background: $light-bg;
+
+  .box-container {
+    @include grid(30rem);
+
+    .box {
+      background: $white;
+      padding: 3rem;
+      text-align: center;
+      border: $border;
+      box-shadow: $box-shadow;
+
+      &:hover {
+        background: $black;
+
+        h3,
+        p {
+          color: $white;
+        }
+        img {
+          filter: invert(1);
+        }
+      }
+
+      img {
+        height: 7rem;
+      }
+
+      h3 {
+        @include titleText(2rem);
+      }
+
+      p {
+        @include graphText(1.5rem);
+      }
+    }
+  }
+}
+
+/* ================= GALLERY ================= */
+.gallery {
+  .gallery-container {
+    @include grid(30rem);
+
+    a {
+      height: 25rem;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.4s;
+      }
+
+      &:hover img {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+/* ================= FACILITIES ================= */
+.facilities {
+  background: $light-bg;
+
+  .box-container {
+    @include grid(30rem);
+
+    .box {
+      background: $white;
+      padding: 3rem;
+      text-align: center;
+      box-shadow: $box-shadow;
+
+      img {
+        height: 8rem;
+      }
+
+      h3 {
+        @include titleText(2rem);
+      }
+
+      p {
+        @include graphText(1.5rem);
+      }
+    }
+  }
+}
+
+/* ================= TEAM ================= */
+.team {
+  .box-container {
+    @include grid(25rem);
+
+    .box {
+      text-align: center;
+
+      img {
+        width: 180px;
+        height: 180px;
+        object-fit: cover; // makes all images fill the box without distortion
+        border-radius: 0.5rem;
+      }
+
+      .share {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 2rem;
+        gap: 0.5rem; // spacing between buttons
+
+        a {
+          width: 50px; // fixed width
+          height: 50px; // fixed height
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.8rem;
+          color: $white;
+          background-color: $black;
+          border-radius: 0.5rem;
+          text-decoration: none;
+          transition: all 0.3s ease;
+
+          img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: inherit;
+          }
+
+          &:hover {
+            background-color: $blue;
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ================= REVIEWS ================= */
+.reviews {
+  background: $light-bg;
+
+  .box-container {
+    @include grid(30rem);
+
+    .box {
+      background: $white;
+      padding: 3rem;
+      box-shadow: $box-shadow;
+      text-align: center;
+
+      .stars i {
+        color: gold;
+        font-size: 1.7rem;
+      }
+
+      p {
+        @include graphText(1.5rem);
+      }
+    }
+  }
+}
+
+/* ================= CONTACT ================= */
+.contact {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+
+    .map {
+      flex: 1 1 40rem;
+      width: 100%;
+      height: 40rem;
+    }
+
+    form {
+      flex: 1 1 40rem;
+      border: $border;
+      padding: 3rem;
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 1.3rem;
+        margin: 0.7rem 0;
+        border: $border;
+      }
+    }
+  }
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  background-color: $light-bg;
+  padding: 4rem 2rem;
+
+  .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 2rem;
+
+    .box {
+      h3 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: $blue;
+      }
+
+      p {
+        font-size: 1.5rem;
+        margin: 0.5rem 0;
+
+        span {
+          font-weight: 600;
+          color: $blue;
+        }
+      }
+
+      a.link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: $blue;
+        font-size: 1.4rem;
+        text-decoration: none;
+        margin: 0.5rem 0;
+        transition: color 0.3s;
+
+        i {
+          color: $blue;
+        }
+
+        &:hover {
+          color: $blue;
+        }
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+
+        .email {
+          padding: 0.8rem 1rem;
+          border-radius: 0.5rem;
+          border: 1px solid #ccc;
+          font-size: 1.4rem;
+        }
+
+        .btn {
+          padding: 0.8rem 1rem;
+          border: none;
+          border-radius: 0.5rem;
+          background-color: $blue;
+          color: $white;
+          cursor: pointer;
+          font-size: 1.4rem;
+          transition: background-color 0.3s;
+
+          &:hover {
+            background-color: darken($blue, 10%);
+          }
+        }
+      }
+
+      .share {
+        margin-top: 1.5rem;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 3rem;
+          height: 3rem;
+          font-size: 1.6rem;
+          color: $white;
+          background-color: $black;
+          border-radius: 50%;
+          transition: all 0.3s;
+
+          &:hover {
+            background-color: $blue;
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  }
+
+  .credit {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 1.5rem;
+    color: $blue;
+
+    span {
+      color: $blue;
+      font-weight: 600;
+    }
+  }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  body {
+    padding-top: 10rem;
+  }
+
+  .header .contact-info {
+    display: none;
+  }
+
+  #menu-btn {
+    display: block;
+  }
+
+  .navbar {
+    position: relative;
+
+    .links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: $white;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding: 3rem 0;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: 0.3s;
+    }
+
+    .links.active {
+      transform: scaleY(1);
+    }
+  }
+
+  .about {
+    flex-direction: column;
+    text-align: center;
+
+    .image img {
+      max-width: 360px;
+      margin-top: 2rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .box-container {
+    grid-template-columns: 1fr;
+  }
+
+  .credit {
+    font-size: 1.3rem;
+    padding: 1.5rem 1rem;
+  }
+}
